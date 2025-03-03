@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioServiceImpl implements UsuarioService{
+public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository repository;
@@ -18,7 +18,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     @Transactional(readOnly = true)
     public List<Usuario> listar() {
-        return (List<Usuario>)repository.findAll();
+        return (List<Usuario>) repository.findAll();
     }
 
     @Transactional(readOnly = true)
@@ -37,5 +37,10 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Transactional
     public void eliminar(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Usuario> porEmail(String email) {
+        return repository.findByEmail(email);
     }
 }

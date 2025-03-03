@@ -3,6 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "cursos")
@@ -12,6 +13,7 @@ public class Curso {
     @GeneratedValue
     private Long id;
 
+    @NotEmpty
     private String nombre;
 
     public Long getId() {

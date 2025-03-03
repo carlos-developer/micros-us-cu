@@ -32,6 +32,10 @@ public class CursoUsuario {
 
     @Override
     public boolean equals(Object obj) {
-        return this == obj;
+        if(!(obj instanceof CursoUsuario)) {
+            return false;
+        }
+        CursoUsuario o = (CursoUsuario) obj;
+        return this.usuarioId != null && this.usuarioId.equals(o.usuarioId);
     }
 }

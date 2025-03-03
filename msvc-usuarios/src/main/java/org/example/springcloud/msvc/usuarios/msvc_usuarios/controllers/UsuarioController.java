@@ -1,5 +1,6 @@
 package org.example.springcloud.msvc.usuarios.msvc_usuarios.controllers;
 
+import feign.ResponseMapper;
 import jakarta.validation.Valid;
 import org.example.springcloud.msvc.usuarios.msvc_usuarios.models.entity.Usuario;
 import org.example.springcloud.msvc.usuarios.msvc_usuarios.services.UsuarioService;
@@ -73,6 +74,11 @@ public class UsuarioController {
             return  ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/usuarios-por-curso")
+    public ResponseEntity<?> obternerAlumnosPorCurso(@RequestParam List<Long> ids) {
+        return ResponseEntity.ok(service.listarPorIds(ids));
     }
 
     private static ResponseEntity<Map<String, String>> validar(BindingResult result) {
